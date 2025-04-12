@@ -235,6 +235,17 @@
 // console.log(oddNumber)
 
 
+//Function
+
+
+function sum(a,b){
+    return a+b
+}
+
+let number= sum(4,6)
+console.log(number)
+
+
 
 
 
