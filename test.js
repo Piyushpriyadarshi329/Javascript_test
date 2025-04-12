@@ -175,6 +175,8 @@
 //     price:50,
 // }
 
+
+
 // // console.log(JSON.stringify(product))
 
 // let s1=JSON.stringify(product)
@@ -235,15 +237,64 @@
 // console.log(oddNumber)
 
 
+
+
+
 //Function
 
+//parameter  defult value set 
 
-function sum(a,b){
-    return a+b
+//... rest oprator, spread opretor
+
+function sum(...num){
+// console.log("num",num)
+let addition=num.reduce((acc,cur)=>acc+cur,0)
+
+console.log(`sum of all number is ${addition} `  , )
+    // return a+b
 }
 
-let number= sum(4,6)
-console.log(number)
+sum(4,9,56,87,2)
+
+// console.log(number)
+
+
+
+//arrow function    ()=>
+
+
+// function fun1(a){
+//     console.log(a)
+
+// }
+
+
+let arr = [2,4,6];
+
+// arr.map((num,i)=>{
+//     console.log(i,"==>",num)
+
+// })
+
+// arr.map(function(i,index){
+// console.log(index,"==>",i)
+// })
+
+// let fun1 = (a)=>{
+
+// console.log(a)
+// }
+
+
+
+// fun1(4)
+
+
+
+
+
+
+
 
 
 
