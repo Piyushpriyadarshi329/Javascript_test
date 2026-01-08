@@ -32,20 +32,20 @@ function debounce1(fun, delay) {
   };
 }
 
-// function throttle(func, interval = 500) {
-//   let isRunning = false;
+function throttle(func, interval = 500) {
+  let isRunning = false;
 
-//   return function (...args) {
-//     if (!isRunning) {
-//       isRunning = true;
+  return function (...args) {
+    if (!isRunning) {
+      isRunning = true;
 
-//       func.apply(this, args);
-//       setTimeout(() => {
-//         isRunning = false;
-//       }, interval);
-//     }
-//   };
-// }
+      func.apply(this, args);
+      setTimeout(() => {
+        isRunning = false;
+      }, interval);
+    }
+  };
+}
 
 function throttle(fun, delay) {
   let isRunning = false;
@@ -60,6 +60,25 @@ function throttle(fun, delay) {
       }, delay);
     } 
   };
+}
+
+
+function throttle(fun,limit){
+
+let isRunning=false
+
+return function(...args){
+  if(isRunning){
+    isRunning= true
+    fun.apply(this,args);
+
+    setTimeout(()=>{
+      isRunning=false
+    }, limit)
+
+  }
+}
+
 }
 
 const searchWithDebounce = debounce(serchfun, 500);

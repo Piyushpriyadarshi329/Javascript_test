@@ -6,6 +6,9 @@ const panRegex= /[A-Z]{4}[P]{1}[0-9]{4}[A-Z]{1}/
 const regex3= /^[A-Z]+$/
 
 
+
+const Panregex  =   /[A-Z]{4}[P]{1}[0-9]{4}[A-Z]{1}/
+
 const regex4= /^abc.*\d$/
 
 //ABCDP1234X

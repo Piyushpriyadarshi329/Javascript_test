@@ -14,17 +14,30 @@
 // console.log("x outside",x)
 
 
-console.log(a)
-console.log(b)
+// console.log(a)
+// console.log(b)
 
-function a(){
-    console.log("a")
+// function a(){
+//     console.log("a")
+// }
+
+// var b= ()=>{
+//     console.log("b")
+// }
+
+
+
+//Destructure
+
+
+function fun(){
+
+    return {name:"abc",age:22}
 }
 
-var b= ()=>{
-    console.log("b")
-}
+let {age,name} = fun()
 
+console.log(age,name)
 
 
 

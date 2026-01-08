@@ -1,16 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="./debounce.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <title>Event Bubbling vs Capturing</title>
+  <style>
+    div {
+      padding: 30px;
+      margin: 10px;
+      border: 2px solid #333;
+    }
+    #outer { background-color: #ffd; }
+    #inner { background-color: #dfd; }
+    #btn   { background-color: #ddf; }
+  </style>
 </head>
 <body>
+  <div id="outer">
+    Outer Div
+    <div id="inner">
+      Inner Div
+      <button id="btn">Click Me</button>
+    </div>
+  </div>
 
-    <input   onkeyup="searchWithDebounce('hello')"/>
+  <script>
+    // Capturing Phase Handlers
 
-    <button onclick="ThrottleFun()">click</button>
-    
+    document.getElementById("inner").addEventListener(
+      "click",
+      () => {
+        console.log("Capturing → Inner Div");
+      },
+      true
+    );
+
+    document.getElementById("outer").addEventListener(
+      "click",
+      (event) => {
+        console.log("Capturing → Outer Div");
+        event.stopPropagation()
+
+      },
+      true // Enable capturing
+    );
+  
+
+    // Bubbling Phase Handlers
+    document.getElementById("inner").addEventListener("click", () => {
+      console.log("Bubbling → Inner Div");
+    });
+
+    document.getElementById("outer").addEventListener("click", () => {
+      console.log("Bubbling → Outer Div");
+    });
+
+    // Target element
+    document.getElementById("btn").addEventListener("click", () => {
+      console.log("Target → Button Clicked");
+    });
+  </script>
 </body>
 </html>
