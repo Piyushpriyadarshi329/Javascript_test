@@ -1,80 +1,47 @@
-// const promise1 = new Promise((resolve, reject) => {
-//     setTimeout(resolve,500,"hello1")
-
-//   });
-
-//   const promise2 = new Promise((resolve, reject) => {
-//     setTimeout(resolve,400,"hello2")
-
-//   });
-
-//   Promise.race([promise1, promise2]).then(result => {
-//     console.log(result); // Output: "hello" (from promise2)
-//   });
-
-// (()=>{
-//     let x= (y=10)
-// })()
-
-// console.log(typeof x)
-// console.log(typeof y)
-
-
-
 let matrix = [
-    [1,  2,  3,  4],
-    [5,  6,  7,  8],
-    [9,  10, 11, 12],
-    [13, 14, 15, 16],
-  ];
-  let m= matrix.length;
-  let n= matrix[0].length
-  let RotateMatrix=[]
-  
-  
-  let sprialmatrix=[]
-  let horizantal=true
-  let forward=true
-  
-  for(let i=0;i<m;i++){
-      for(let j=i;j<n;j++){
-          if(forward){
-              if(horizantal){
-                  sprialmatrix.push(matrix[i][j])
-              }else{
-                  sprialmatrix.push(matrix[j][m-i-1])
-       
-              }
-          }else{
-              if(horizantal){
-                  sprialmatrix.push(matrix[i][j])
-              }else{
-                  sprialmatrix.push(matrix[j][m-i-1])
-       
-              } 
-          }
-          
-          if(!horizantal){
-              forward=!forward
-          }
-          horizantal=!horizantal
-  
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 16],
+];
+
+function fun(matrix) {
+  let result = [];
+  let top = 0; //0
+  let bottom = matrix.length - 1; //3
+  let left = 0; //0
+  let right = matrix[0].length - 1; //3
+
+  while (top <= bottom && left <= right) {
+    for (let col = 0; col <= right; col++) {
+      result.push(matrix[top][col]);
+    }
+    top++;
+
+    for (let row = top; row <= bottom; row++) {
+      result.push(matrix[row][right]);
+    }
+    right--; //2
+
+    if (top <= bottom) {
+      for (let col = right; col >= left; col--) {
+        result.push(matrix[bottom][col]);
       }
+
+      bottom--;
+    }
+
+    if (top <= bottom) {
+      for (let row = bottom; row <= bottom; row++) {
+        result.push(matrix[row][left]);
+      }
+      left++;
+    }
   }
-  
-  
-  
-  // var transposematrix=[]
-  // for(let i=0;i<n;i++){
-  //     transposematrix[i]=[]
-  //     for(let j=0;j<m;j++){
-  //         transposematrix[i][j]=matrix[j][i]
-  //     }
-  // }
-  // console.log("transposematrix",transposematrix)
-  
-  
-  
-  
-  
-  console.log("RotateMatrix",RotateMatrix)
+
+  return result;
+}
+
+let result = fun(matrix);
+
+console.log("result", result);
